@@ -22,14 +22,14 @@
 <body>
   <div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
-    @include('partial._navbar.blade.php')
+    @include('partial._navbar')
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:../../partials/_settings-panel.html -->
-      @include('partial._settings-panel.blade.php')
+      @include('partial._settings-panel')
       <!-- partial -->
       <!-- partial:../../partials/_sidebar.html -->
-      @include('partial._sidebar.blade.php')
+      @include('partial._sidebar')
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -732,7 +732,7 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
-        @include('partial._footer.blade.php')
+        @include('partial._footer')
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
