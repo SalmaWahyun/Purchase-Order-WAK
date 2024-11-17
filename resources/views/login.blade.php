@@ -29,18 +29,28 @@
               <div class="brand-logo">
                 <img src="../../images/logo_wak.jpeg" alt="logo">
               </div>
-              <form class="pt-3">
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username">
+              <form action="{{ route('login') }}" method="POST" class="pt-3">
+              @csrf  
+              <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" id="nama_user" name="nama_user" placeholder="Username">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="PIN">
-                </div>
+                </div> -->
+                @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="{{ route('dashboard') }}">SIGN IN</a>
+                  <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN IN</button>
                 </div>
               </form>
             </div>

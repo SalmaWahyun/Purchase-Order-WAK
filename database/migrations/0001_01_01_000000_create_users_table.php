@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ms_user', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->id('id_user');
+            $table->string('nama_user', 50);
+            $table->string('password', 32);
+            $table->string('pin_user', 6);
+            $table->enum('level', ['superadmin', 'admin'])->default('admin');
             $table->rememberToken();
             $table->timestamps();
         });

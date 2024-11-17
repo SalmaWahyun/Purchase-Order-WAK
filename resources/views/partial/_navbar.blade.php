@@ -22,8 +22,10 @@
               <i class="icon-bell mx-0"></i>
               <span class="count"></span>
             </a>
-            <a class="btn btn-block btn-primary btn-sm font-weight-medium auth-form-btn float-right" href="http://127.0.0.1:8000/login">Log out</a>
-
+                          <form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn btn-block btn-primary btn-sm font-weight-medium auth-form-btn float-right">Log Out</button>
+</form>
             
           </li>
         </ul>

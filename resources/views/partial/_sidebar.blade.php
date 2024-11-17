@@ -7,6 +7,24 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('marketlist') }}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Market List</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('suratjalan') }}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Surat Jalan</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('invoice') }}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Invoice</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">UI Elements</span>
