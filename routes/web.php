@@ -32,6 +32,12 @@ Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index
 
 Route::get('/marketlist', [MarketListController::class, 'index'])->name('marketlist');
 
+Route::post('/marketlist', [MarketListController::class, 'TambahProduk'])->name('TambahProduk');
+
+Route::get('/marketlist/EditProduk/{id}', [MarketListController::class, 'EditProduk'])->name('EditProduk');
+
+Route::put('/marketlist/UpdateProduk/{id}', [MarketListController::class, 'UpdateProduk'])->name('UpdateProduk');
+
 Route::get('/suratjalan', [SuratJalanController::class, 'index'])->name('suratjalan');
 
 Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
