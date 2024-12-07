@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\DaftarProdukController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MarketListController;
 use App\Http\Controllers\SuratJalanController;
+use App\Http\Controllers\TambahPesananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BasicElementController;
@@ -37,6 +39,10 @@ Route::post('/marketlist', [MarketListController::class, 'TambahProduk'])->name(
 Route::get('/marketlist/EditProduk/{id}', [MarketListController::class, 'EditProduk'])->name('EditProduk');
 
 Route::put('/marketlist/UpdateProduk/{id}', [MarketListController::class, 'UpdateProduk'])->name('UpdateProduk');
+
+Route::get('/daftarproduk', [DaftarProdukController::class, 'index'])->name('daftarproduk');
+
+Route::get('/tambahpesanan', [TambahPesananController::class, 'index'])->name('tambahpesanan');
 
 Route::get('/suratjalan', [SuratJalanController::class, 'index'])->name('suratjalan');
 

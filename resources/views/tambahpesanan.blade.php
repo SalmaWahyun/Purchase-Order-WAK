@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
@@ -32,12 +33,7 @@
       <!-- partial:../../partials/_sidebar.html -->
       @include('partial._sidebar')
       <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="column">
-
-            <!--Tambah Pesanana-->
-            <div class="main-panel">        
+      <div class="main-panel">        
         <div class="content-wrapper">
           <div class="row">
             
@@ -126,53 +122,8 @@
                     <button type="button" class="btn btn-inverse-primary btn-fw mb-5 align-items-center" data-bs-toggle="modal" data-bs-target="#tambahproduk">
                         <i class="mdi mdi-plus" style="vertical-align: middle; margin-right: 8px;"></i>Tambah Pesanan
                     </button>
-                    <h4 class="card-title">Daftar Pesanan</h4>
+                    <h4 class="card-title">Daftar Produk</h4>
                     <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>Produk</th>
-                          <th>jumlah</th>
-                          <th>Harga</th>
-                          <th>Subtotal</th>
-                          <th>Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      @foreach ($tr_pesanan as $trpesanan)
-                        <tr>
-                        <td>{{ $trpesanan->produk->nama_produk ?? 'Tidak ada'}}</td>
-                        <td>{{ $trpesanan->jumlah }}</td>
-                        <td>{{ $trpesanan->harga}}</td>
-                        <td>{{ $trpesanan->sub_total}}</td>
-
-                        <td>
-                            <a class="btn btn-link">
-                                <i class="mdi mdi-pencil-box"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-                    <button type="submit" class="btn btn-success mr-2">Simpan</button>
-                    <button class="btn btn-danger">Batal</button>
-                     
-                  </div>
-                </div>
-            <!--End Tambah Pesanan-->
-
-            <div class="template-demo">
-              <a type="button" class="btn btn-inverse-primary btn-fw mb-5 align-items-center" href="{{ route('tambahpesanan') }}">
-              <i class="mdi mdi-plus" style="vertical-align: middle; margin-right: 8px;"></i>Tambah Pesanan
-              </a>
-            </div>
-            <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Daftar Produk</h4>
-                  <div class="table-responsive">
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -201,35 +152,37 @@
                             @endif
                         </td>
 
-            <td>
-            <a class="btn btn-link">
-        <i class="mdi mdi-pencil-box"></i>
-    </a>
-            </td>
-        </tr>
-        @endforeach
+                        <td>
+                            <a class="btn btn-link">
+                                <i class="mdi mdi-pencil-box"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
                       </tbody>
                     </table>
                   </div>
-                </div>
-              </div>
-            </div>
-           </div>
+                    <button type="submit" class="btn btn-success mr-2">Simpan</button>
+                    <button class="btn btn-danger">Batal</button>
+                     
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         @include('partial._footer')
+        </footer>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+  <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
   <script src="../../js/off-canvas.js"></script>
@@ -239,6 +192,9 @@
   <script src="../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
   <!-- End custom js for this page-->
 </body>
 

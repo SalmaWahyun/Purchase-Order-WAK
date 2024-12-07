@@ -6,11 +6,24 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{{ route('marketlist') }}">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Market List</span>
             </a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#market-list" aria-expanded="false" aria-controls="market-list">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Market List</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="market-list">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('marketlist') }}">Market List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('daftarproduk') }}">Daftar Produk</a></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('suratjalan') }}">

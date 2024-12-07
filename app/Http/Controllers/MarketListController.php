@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Models\Produk; 
+use App\Models\Konsumen;
+use App\Models\Suplier;
+use App\Models\TransaksiPesanan;
+
 
 class MarketListController extends Controller
 {
     public function index()
     {
         $ms_produk = Produk::all(); // Ambil semua data dari tabel
+        $ms_pesanan = Pesanan::all(); // Ambil semua data dari tabel
+        $tr_pesanan = TransaksiPesanan::all();
+        $konsumen = Konsumen::select('id_konsumen', 'nama_konsumen')->get();
+        $suplier = Suplier::select('id_suplier', 'nama_suplier')->get();
+        $produk = Produk::select('id_produk', 'nama_produk')->get();
 
-        return view('marketlist', compact('ms_produk'));
+        return view('marketlist', compact('ms_produk','ms_pesanan', 'tr_pesanan', 'konsumen', 'suplier', 'produk'));
+        
     }
 
     public function TambahProduk(Request $request)

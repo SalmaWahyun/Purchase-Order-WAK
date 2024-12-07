@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session; 
 
 class LoginController extends Controller
 {
@@ -33,6 +34,11 @@ class LoginController extends Controller
             // Jika password cocok, update ke bcrypt dan simpan
     
             Auth::login($user); // Login ke aplikasi
+
+            // Menyimpan nama admin ke session
+            Session::put('admin_name', $user->nama_user); // Simpan nama admin di session
+            // dd(session('admin_name'));
+
             return redirect()->intended('/dashboard');
         }
 
