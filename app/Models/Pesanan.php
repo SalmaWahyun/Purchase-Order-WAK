@@ -10,7 +10,7 @@ class Pesanan extends Model
     use HasFactory;
 
     protected $table = 'ms_pesanan'; // Nama tabel di database
-    protected $fillable = ['tanggal_pesan', 'tanggal_kirim', 'penerima', 'catatan', 'status', 'ms_user_id_user', 'ms_konsumen_id_konsumen', 'ms_suplier_id_suplier'];
+    protected $fillable = ['tanggal_pesan', 'tanggal_kirim', 'status', 'ms_user_id_user', 'ms_konsumen_id_konsumen', 'ms_suplier_id_suplier'];
     public $timestamps = false;
     protected $primaryKey = 'id_pesanan'; 
 

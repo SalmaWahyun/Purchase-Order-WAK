@@ -19,4 +19,18 @@ class DaftarProdukController extends Controller
 
         return view('daftarproduk', compact('ms_pesanan', 'ms_produk', 'konsumen', 'suplier'));
     }
+
+    public function TambahProduk(Request $request)
+    {
+        $validated = $request->validate([
+            'nama_produk' => 'required|string|max:50',
+            'deskripsi' => 'required|string',
+            'harga_produk' => 'required|numeric',
+            'satuan' => 'required|string',
+        ]);
+
+        Produk::create($validated);
+
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan.');
+    }
 }

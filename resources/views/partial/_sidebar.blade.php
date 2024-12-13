@@ -6,12 +6,6 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="{{ route('marketlist') }}">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Market List</span>
-            </a>
-          </li> -->
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#market-list" aria-expanded="false" aria-controls="market-list">
               <i class="icon-grid menu-icon"></i>
@@ -38,6 +32,19 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#suplier-konsumen" aria-expanded="false" aria-controls="suplier-konsumen">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Suplier & Konsumen</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="suplier-konsumen">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('suplier') }}">Suplier</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('konsumen') }}">Konsumen</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="icon-layout menu-icon"></i>
               <span class="menu-title">UI Elements</span>
@@ -130,6 +137,6 @@
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Documentation</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>

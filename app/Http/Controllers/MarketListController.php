@@ -39,6 +39,24 @@ class MarketListController extends Controller
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan.');
     }
 
+    public function TambahPesanan(Request $request)
+    {
+        
+        $validated = $request->validate([
+            'tanggal_pesan' => 'required|date',
+            'tanggal_kirim' => 'required|date',
+            'status' => 'required|string',
+            'ms_user_id_user' => 'required|integer|exists:ms_user,id_user',
+            'ms_konsumen_id_konsumen' => 'required|integer|exists:ms_konsumen,id_konsumen',
+            'ms_suplier_id_suplier' => 'required|integer|exists:ms_suplier,id_suplier',
+        ]);
+        dd($request->all());
+        Pesanan::create($validated);
+    
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan.');
+    }
+    
+
     public function EditProduk($id)
     {
         $produk = Produk::findOrFail($id); // Mencari produk berdasarkan ID

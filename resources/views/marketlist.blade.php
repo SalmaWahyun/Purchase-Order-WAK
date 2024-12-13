@@ -36,137 +36,10 @@
         <div class="content-wrapper">
           <div class="column">
 
-            <!--Tambah Pesanana-->
-            <div class="main-panel">        
-        <div class="content-wrapper">
-          <div class="row">
-            
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Tambah Pesanan</h4>
-                  <form class="form-sample">
-                    <p class="card-description">
-                      Tambahkan Pesanan Baru
-                    </p>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Admin</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control"value="{{ session('admin_name') }}" required readonly />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Status</label>
-                          <div class="col-sm-9">
-                            <select class="form-control" id="status">
-                                <option>pesanan</option>
-                                <option>dikirim</option>
-                                <option>selesai</option>
-                              </select>
-                          </div>
-                        </div>
-                      </div>                 
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Konsumen</label>
-                          <div class="col-sm-9">
-                            <select class="form-control" id="konsumen"name="ms_konsumen_id_konsumen" required>
-                                <option value="">-- Pilih Konsumen --</option>
-
-                                <!-- Looping data konsumen -->
-                                @foreach ($konsumen as $item)
-                                <option value="{{ $item->id_konsumen }}">{{ $item->nama_konsumen }}</option>
-                                @endforeach
-
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Suplier</label>
-                          <div class="col-sm-9">
-                          <select class="form-control" id="suplier"name="ms_suplier_id_suplier" required>
-                            <option value="">-- Pilih Suplier --</option>
-
-                            <!-- Looping data konsumen -->
-                            @foreach ($suplier as $item)
-                            <option value="{{ $item->id_suplier }}">{{ $item->nama_suplier }}</option>
-                            @endforeach
-
-                        </select>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Tanggal Pesan</label>
-                          <div class="col-sm-9">
-                            <input type="date" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Tanggal Kirim</label>
-                          <div class="col-sm-9">
-                            <input type="date" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-inverse-primary btn-fw mb-5 align-items-center" data-bs-toggle="modal" data-bs-target="#tambahproduk">
-                        <i class="mdi mdi-plus" style="vertical-align: middle; margin-right: 8px;"></i>Tambah Pesanan
-                    </button>
-                    <h4 class="card-title">Daftar Pesanan</h4>
-                    <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>Produk</th>
-                          <th>jumlah</th>
-                          <th>Harga</th>
-                          <th>Subtotal</th>
-                          <th>Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      @foreach ($tr_pesanan as $trpesanan)
-                        <tr>
-                        <td>{{ $trpesanan->produk->nama_produk ?? 'Tidak ada'}}</td>
-                        <td>{{ $trpesanan->jumlah }}</td>
-                        <td>{{ $trpesanan->harga}}</td>
-                        <td>{{ $trpesanan->sub_total}}</td>
-
-                        <td>
-                            <a class="btn btn-link">
-                                <i class="mdi mdi-pencil-box"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-                    <button type="submit" class="btn btn-success mr-2">Simpan</button>
-                    <button class="btn btn-danger">Batal</button>
-                     
-                  </div>
-                </div>
-            <!--End Tambah Pesanan-->
-
             <div class="template-demo">
-              <a type="button" class="btn btn-inverse-primary btn-fw mb-5 align-items-center" href="{{ route('tambahpesanan') }}">
-              <i class="mdi mdi-plus" style="vertical-align: middle; margin-right: 8px;"></i>Tambah Pesanan
-              </a>
+                <button type="button" class="btn btn-inverse-primary btn-fw mb-5 align-items-center" data-bs-toggle="modal" data-bs-target="#tambahpesanan">
+                <i class="mdi mdi-plus" style="vertical-align: middle; margin-right: 8px;"></i>Tambah Pesanan
+                </button>
             </div>
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -225,6 +98,67 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+  <!-- Modal Tambah Pesanan -->
+  <div class="modal fade" id="tambahpesanan" tabindex="-1" aria-labelledby="tambahPesananModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tambahPesananModalLabel">Tambah Pesanan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{{ route('TambahPesanan') }}" method="POST">
+          @csrf <!-- Tambahkan CSRF token untuk keamanan -->
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="adminName" class="form-label">Admin</label>
+              <input type="text" class="form-control form-control-sm" id="adminName" name="ms_user_id_user" value="{{ session('admin_name') }}" readonly />
+            </div>
+            <div class="mb-3">
+              <label for="status" class="form-label">Status</label>
+              <select class="form-control form-control-sm" id="status" name="status" required>
+                <option value="pesanan">Pesanan</option>
+                <option value="dikirim">Dikirim</option>
+                <option value="selesai">Selesai</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="id_konsumen" class="form-label">Konsumen</label>
+              <select class="form-control form-control-sm" id="id_konsumen" name="ms_konsumen_id_konsumen" required>
+                <option value="">-- Pilih Konsumen --</option>
+                @foreach ($konsumen as $item)
+                <option value="{{ $item->id_konsumen }}">{{ $item->nama_konsumen }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="id_suplier" class="form-label">Suplier</label>
+              <select class="form-control form-control-sm" id="id_suplier" name="ms_suplier_id_suplier" required>
+                <option value="">-- Pilih Suplier --</option>
+                @foreach ($suplier as $item)
+                <option value="{{ $item->id_suplier }}">{{ $item->nama_suplier }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="tanggalpesan" class="form-label">Tanggal Pesan</label>
+              <input type="date" class="form-control form-control-sm" id="tanggalpesan" name="tanggal_pesan" required />
+            </div>
+            <div class="mb-3">
+              <label for="tanggalkirim" class="form-label">Tanggal Kirim</label>
+              <input type="date" class="form-control form-control-sm" id="tanggalkirim" name="tanggal_kirim" required />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-success">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Tambah Pesanan -->
+
+
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

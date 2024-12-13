@@ -4,6 +4,8 @@ use App\Http\Controllers\DaftarProdukController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MarketListController;
 use App\Http\Controllers\SuratJalanController;
+use App\Http\Controllers\KonsumenController;
+use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\TambahPesananController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -34,7 +36,7 @@ Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index
 
 Route::get('/marketlist', [MarketListController::class, 'index'])->name('marketlist');
 
-Route::post('/marketlist', [MarketListController::class, 'TambahProduk'])->name('TambahProduk');
+Route::post('/marketlist', [MarketListController::class, 'TambahPesanan'])->name('TambahPesanan');
 
 Route::get('/marketlist/EditProduk/{id}', [MarketListController::class, 'EditProduk'])->name('EditProduk');
 
@@ -42,11 +44,21 @@ Route::put('/marketlist/UpdateProduk/{id}', [MarketListController::class, 'Updat
 
 Route::get('/daftarproduk', [DaftarProdukController::class, 'index'])->name('daftarproduk');
 
+Route::post('/daftarproduk', [DaftarProdukController::class, 'TambahProduk'])->name('TambahProduk');
+
 Route::get('/tambahpesanan', [TambahPesananController::class, 'index'])->name('tambahpesanan');
 
 Route::get('/suratjalan', [SuratJalanController::class, 'index'])->name('suratjalan');
 
 Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
+
+Route::get('/konsumen', [KonsumenController::class, 'index'])->name('konsumen');
+
+Route::post('/konsumen', [KonsumenController::class, 'TambahKonsumen'])->name('TambahKonsumen');
+
+Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier');
+
+Route::post('/suplier', [SuplierController::class, 'TambahSuplier'])->name('TambahSuplier');
 
 Route::get('/basic_elements', [BasicElementController::class, 'index'])->name('basic_elements');
 
