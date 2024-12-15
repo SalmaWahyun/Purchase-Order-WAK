@@ -37,7 +37,7 @@
           <div class="column">
 
             <div class="template-demo">
-                <button type="button" class="btn btn-inverse-primary btn-fw mb-5 align-items-center" data-bs-toggle="modal" data-bs-target="#tambahsuplier">
+                <button type="button" class="btn btn-inverse-primary btn-fw m-3 align-items-center" data-bs-toggle="modal" data-bs-target="#tambahsuplier">
                 <i class="mdi mdi-plus" style="vertical-align: middle; margin-right: 8px;"></i>Tambah Suplier
                 </button>
             </div>
@@ -64,9 +64,16 @@
                             <td>{{ $suplier->no_hp }} </td>
                             <td>{{ $suplier->email }}</td>
                             <td>
-                            <a >
-                                <i class="mdi mdi-pencil-box"></i>
-                            </a>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" 
+                                            data-bs-target="#editSuplier{{ $suplier->id_suplier }}" title="Edit">
+                                        <i class="mdi mdi-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" 
+                                            onclick="konfirmasiHapus('{{ $suplier->id_suplier }}')" title="Hapus">
+                                        <i class="mdi mdi-delete"></i>
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                       @endforeach
@@ -127,7 +134,47 @@
   
 
   <!-- modal edit produk -->
-  
+  @foreach ($ms_suplier as $suplier)
+  <div class="modal fade" id="editSuplier{{ $suplier->id_suplier }}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Suplier</h5>
+            </div>
+            <form action="{{ route('UpdateSuplier', $suplier->id_suplier) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Nama Suplier</label>
+                        <input type="text" class="form-control" name="nama_suplier" 
+                               value="{{ $suplier->nama_suplier }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Alamat</label>
+                        <textarea class="form-control" name="alamat" rows="3" 
+                                  required>{{ $suplier->alamat }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">No HP</label>
+                        <input type="text" class="form-control" name="no_hp" 
+                               value="{{ $suplier->no_hp }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" 
+                               value="{{ $suplier->email }}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+  @endforeach
   <!-- end modal edit produk -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>
@@ -144,6 +191,45 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  <!-- Modal Konfirmasi Hapus -->
+  <div class="modal fade" id="modalKonfirmasiHapus" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">
+                    <i class="mdi mdi-alert"></i> Konfirmasi Hapus
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menghapus suplier ini?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="mdi mdi-close"></i> Batal
+                </button>
+                <form id="formHapus" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">
+                        <i class="mdi mdi-delete"></i> Ya, Hapus
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Script untuk konfirmasi hapus -->
+  <script>
+    function konfirmasiHapus(id) {
+        const form = document.getElementById('formHapus');
+        form.action = `/suplier/${id}`;
+        $('#modalKonfirmasiHapus').modal('show');
+    }
+  </script>
 </body>
 
 </html>

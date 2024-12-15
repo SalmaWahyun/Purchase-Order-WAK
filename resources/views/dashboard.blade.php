@@ -42,54 +42,15 @@
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                   <h2 class="font-weight-bold">Selamat Datang di Warung Abah Khamim</h2>
                   <h4 class="font-weight-bold">Kelola pesanan warung lebih mudah dengan Aplikasi PO Warung Abah Khamim. Sederhana, cepat, dan efisien</h4>
-                </div>
-                <div class="col-12 col-xl-4">
-                  <div class="justify-content-end d-flex">
-                    <div class="flex-md-grow-1 flex-xl-grow-0">
-                      <input type="date" id="date-picker" class="form-control" style="width: auto;">
-                    </div>
-                  </div>
-                </div>
-                
-                <script>
-                  // Function to format date as "DD MMM YYYY"
-                  function formatDate(date) {
-                    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-                    return date.toLocaleDateString('en-GB', options);
-                  }
-                
-                  const datePicker = document.getElementById('date-picker');
-                
-                  // Set today's date when the page loads
-                  const today = new Date();
-                  datePicker.valueAsDate = today;
-                
-                  // Update the date if the user selects a new one (optional, if needed for further logic)
-                  datePicker.addEventListener('change', function() {
-                    const date = new Date(this.value);
-                    console.log("Selected date: ", formatDate(date));
-                  });
-                </script>
-                
+                </div>                
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
-              <div class="card tale-bg">
+              <div class="card ">
                 <div class="card-people mt-auto">
-                  <img src="images/dashboard/people.svg" alt="people">
-                  <div class="weather-info">
-                    <div class="d-flex">
-                      <div>
-                        <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
-                      </div>
-                      <div class="ml-2">
-                        <h4 class="location font-weight-normal">Bangalore</h4>
-                        <h6 class="font-weight-normal">India</h6>
-                      </div>
-                    </div>
-                  </div>
+                  <img src="images/logo_wak.jpeg" alt="people">
                 </div>
               </div>
             </div>
@@ -98,18 +59,18 @@
                 <div class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-tale">
                     <div class="card-body">
-                      <p class="mb-4">Today’s Bookings</p>
-                      <p class="fs-30 mb-2">4006</p>
-                      <p>10.00% (30 days)</p>
+                      <p class="mb-4">Pesanan Diselesaikan</p>
+                      <p class="fs-30 mb-2">{{ $pesananSelesai }}</p>
+                      <p>Total pesanan yang telah selesai</p>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-dark-blue">
                     <div class="card-body">
-                      <p class="mb-4">Total Bookings</p>
-                      <p class="fs-30 mb-2">61344</p>
-                      <p>22.00% (30 days)</p>
+                      <p class="mb-4">Pesanan Dikirim</p>
+                      <p class="fs-30 mb-2">{{ $pesananDikirim }}</p>
+                      <p>Total pesanan dalam pengiriman</p>
                     </div>
                   </div>
                 </div>
@@ -118,18 +79,18 @@
                 <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                   <div class="card card-light-blue">
                     <div class="card-body">
-                      <p class="mb-4">Number of Meetings</p>
-                      <p class="fs-30 mb-2">34040</p>
-                      <p>2.00% (30 days)</p>
+                      <p class="mb-4">Pesanan Dipesan</p>
+                      <p class="fs-30 mb-2">{{ $pesananDipesan }}</p>
+                      <p>Total pesanan yang masih diproses</p>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6 stretch-card transparent">
                   <div class="card card-light-danger">
                     <div class="card-body">
-                      <p class="mb-4">Number of Clients</p>
-                      <p class="fs-30 mb-2">47033</p>
-                      <p>0.22% (30 days)</p>
+                      <p class="mb-4">Total Seluruh Pesanan</p>
+                      <p class="fs-30 mb-2">{{ $totalPesanan }}</p>
+                      <p>Jumlah keseluruhan pesanan</p>
                     </div>
                   </div>
                 </div>

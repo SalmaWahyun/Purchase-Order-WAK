@@ -20,18 +20,6 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('suratjalan') }}">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Surat Jalan</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('invoice') }}">
-              <i class="icon-grid menu-icon"></i>
-              <span class="menu-title">Invoice</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#suplier-konsumen" aria-expanded="false" aria-controls="suplier-konsumen">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Suplier & Konsumen</span>
@@ -43,6 +31,12 @@
                 <li class="nav-item"> <a class="nav-link" href="{{ route('konsumen') }}">Konsumen</a></li>
               </ul>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('riwayat.index') }}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Riwayat</span>
+            </a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

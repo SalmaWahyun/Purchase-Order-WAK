@@ -30,18 +30,21 @@ class LoginController extends Controller
 
 
         // Menggunakan nama_user untuk login
-        if ($user && md5($request->password) === $user->password) {
-            // Jika password cocok, update ke bcrypt dan simpan
-    
-            Auth::login($user); // Login ke aplikasi
-
-            // Menyimpan nama admin ke session
-            Session::put('admin_name', $user->nama_user); // Simpan nama admin di session
-            // dd(session('admin_name'));
-
-            return redirect()->intended('/dashboard');
+        // Cek apakah user ditemukan
+        if ($user) {
+            // Bandingkan password yang diinput (setelah di-MD5) dengan password di database
+            $inputPasswordMd5 = md5($request->password);
+            
+            if ($inputPasswordMd5 === $user->password) {
+                Auth::login($user);
+                
+                // Simpan nama admin di session
+                Session::put('admin_id', $user->id_user);
+Session::put('admin_name', $user->nama_user);
+                
+                return redirect()->intended('/dashboard');
+            }
         }
-
         return back()->withErrors([
             'nama_user' => 'Nama pengguna atau password salah.',
         ]);

@@ -21,6 +21,8 @@ use App\Http\Controllers\MDIController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TypographyController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\RiwayatPesananController;
 
 // Route::get('/', function () {
 //     return view('login');
@@ -48,9 +50,6 @@ Route::post('/daftarproduk', [DaftarProdukController::class, 'TambahProduk'])->n
 
 Route::get('/tambahpesanan', [TambahPesananController::class, 'index'])->name('tambahpesanan');
 
-Route::get('/suratjalan', [SuratJalanController::class, 'index'])->name('suratjalan');
-
-Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
 
 Route::get('/konsumen', [KonsumenController::class, 'index'])->name('konsumen');
 
@@ -83,3 +82,41 @@ Route::get('/mdi', [MDIController::class, 'index'])->name('mdi');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
 Route::get('/typography', [TypographyController::class, 'index'])->name('typography');
+
+Route::get('/tambah-pesanan', [MarketListController::class, 'createPesanan'])->name('create.pesanan');
+Route::post('/store-pesanan', [MarketListController::class, 'storePesanan'])->name('store.pesanan');
+
+Route::get('/pesanan/{id}/detail', [MarketListController::class, 'detailPesanan'])->name('pesanan.detail');
+Route::get('/pesanan/{id}/edit', [MarketListController::class, 'editPesanan'])->name('pesanan.edit');
+Route::put('/pesanan/{id}', [MarketListController::class, 'updatePesanan'])->name('pesanan.update');
+
+Route::delete('/transaksi-pesanan/{id}', [MarketListController::class, 'deleteTransaksi'])
+    ->name('transaksi.delete');
+
+Route::post('/pesanan/{id}/transaksi', [MarketListController::class, 'storeTransaksi'])
+    ->name('transaksi.store');
+
+Route::delete('/transaksi-pesanan/{id}/delete-with-pesanan', [MarketListController::class, 'deleteTransaksiAndPesanan'])
+    ->name('transaksi.delete-with-pesanan');
+
+Route::delete('/pesanan/{id}', [MarketListController::class, 'deletePesanan'])->name('pesanan.delete');
+
+Route::put('/daftarproduk/{id}', [DaftarProdukController::class, 'UpdateProduk'])->name('UpdateProduk');
+
+Route::delete('/daftarproduk/{id}', [DaftarProdukController::class, 'deleteProduk'])->name('DeleteProduk');
+
+Route::put('/suplier/{id}', [SuplierController::class, 'UpdateSuplier'])->name('UpdateSuplier');
+Route::delete('/suplier/{id}', [SuplierController::class, 'deleteSuplier'])->name('DeleteSuplier');
+
+Route::put('/konsumen/{id}', [KonsumenController::class, 'UpdateKonsumen'])->name('UpdateKonsumen');
+Route::delete('/konsumen/{id}', [KonsumenController::class, 'deleteKonsumen'])->name('DeleteKonsumen');
+
+Route::get('/check-produk/{pesananId}/{produkId}', [MarketListController::class, 'checkProduk']);
+
+// Route::get('/cetak-invoice/{id}', [InvoiceController::class, 'cetakInvoice'])->name('cetak.invoice');
+
+Route::get('/preview-invoice/{id}', [InvoiceController::class, 'Invoice'])->name('preview.invoice');
+
+Route::get('/riwayat-pesanan', [RiwayatPesananController::class, 'index'])->name('riwayat.index');
+Route::get('/riwayat-pesanan/{id}', [RiwayatPesananController::class, 'detail'])->name('riwayat.detail');
+Route::put('/pesanan/{id}/selesai', [MarketListController::class, 'selesaikanPesanan'])->name('pesanan.selesai');

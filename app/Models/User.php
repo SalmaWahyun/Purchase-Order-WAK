@@ -20,9 +20,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_user',
         'nama_user',
         'password',
-        // 'pin_user',
+        'pin_user',
+        'level',
     ];
 
     /**
@@ -40,10 +42,16 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'password' => 'hashed',
+    //     ];
+    // }
+
+    // Tambahkan relasi ke Pesanan
+    public function pesanan()
     {
-        return [
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Pesanan::class, 'ms_user_id_user', 'id_user');
     }
 }

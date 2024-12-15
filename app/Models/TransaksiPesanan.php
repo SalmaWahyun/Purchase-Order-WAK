@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pesanan;
+use App\Models\Produk;
+
 
 class TransaksiPesanan extends Model
 {
@@ -15,10 +18,11 @@ class TransaksiPesanan extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_tr_pesanan'; 
 
-    public function trPesananPesananProduk()
+    public function pesanan()
     {
-        return $this->belongsTo(Pesanan::class, 'ms_pesanan_id_pesanan ', 'id_pesanan');
+        return $this->belongsTo(Pesanan::class, 'ms_pesanan_id_pesanan', 'id_pesanan');
     }
+
     public function produk()
     {
         return $this->belongsTo(Produk::class, 'ms_produk_id_produk', 'id_produk');
