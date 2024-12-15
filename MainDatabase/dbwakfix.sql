@@ -58,7 +58,7 @@ CREATE TABLE `detail_riwayat_pesanan` (
   `sub_total` int NOT NULL,
   `nama_produk` varchar(25) NOT NULL,
   `ms_pesanan_id_pesanan` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `detail_riwayat_pesanan`
@@ -295,8 +295,8 @@ CREATE TABLE `riwayat_pesanan` (
   `status` varchar(20) NOT NULL,
   `nama_user` varchar(255) NOT NULL,
   `nama_konsumen` varchar(255) NOT NULL,
-  `nama_suplier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nama_suplier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `riwayat_pesanan`

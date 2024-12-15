@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'id_user' => 1,
-            'nama_user' => 'superadmin',
-            'level' => 'superadmin',
+            'id_user' => 3,
+            'nama_user' => 'admin',
+            'level' => 'admin',
             'password' => md5('superadmin'),
             'pin_user' => '123456',
         ]);
